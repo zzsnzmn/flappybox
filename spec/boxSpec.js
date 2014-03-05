@@ -62,5 +62,24 @@ describe("Box", function() {
           expect(game.score).toEqual(0);
           expect(game.text).toEqual("YOU LOSE! Final score: 2 click to play again!");
       });
+
+      it("resets barrier x value if there is a collision", function() {
+          box.y = 30; // put in range of barrier offset
+          box.dy = 4; // put in range of barrier offset
+          game.barrier.x = 20; // put barrier on top of box
+          expect(game.barrier.x).toEqual(20);
+          box.checkCollisions(game);
+          expect(game.barrier.x).toEqual(game.width);
+      });
+
+      it("pauses if there is a collision", function() {
+          box.y = 30; // put in range of barrier offset
+          box.dy = 4; // put in range of barrier offset
+          game.barrier.x = 20; // put barrier on top of box
+          game.state = "active"; 
+          expect(game.state).toEqual("active");
+          box.checkCollisions(game);
+          expect(game.state).toEqual("paused");
+      });
   });
 });
