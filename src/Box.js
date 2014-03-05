@@ -32,6 +32,6 @@ Box.prototype.checkCollisions = function(game) {
     }    
 }
 
-Box.prototype.draw = function() {
+Box.prototype.draw = function(ctx) {
     ctx.fillRect(this.x, this.y, this.height, this.height);
 }

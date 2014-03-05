@@ -9,11 +9,6 @@ function Barrier(game) {
     this.offset = 40;  // the opening flappy box can fit through
 }
 
-Barrier.prototype.draw = function() {
-    ctx.fillRect(this.x, 0, this.w, this.offset);
-    ctx.fillRect(this.x, this.offset + this.h, this.w, this.maxY);
-}
-
 Barrier.prototype.update = function(game) {
     this.x -= 4;
     if (this.x < 0) {
@@ -26,3 +21,9 @@ Barrier.prototype.reset = function(game) {
     this.offset = Math.floor((Math.random()*300)+30);
     game.score += 1;
 }
+
+Barrier.prototype.draw = function(ctx) {
+    ctx.fillRect(this.x, 0, this.w, this.offset);
+    ctx.fillRect(this.x, this.offset + this.h, this.w, this.maxY);
+}
+

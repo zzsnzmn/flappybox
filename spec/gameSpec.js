@@ -1,6 +1,8 @@
 describe("Game", function() {
     beforeEach(function() {
         game = new Game(500, 500);
+        canvas = document.getElementById('canvas');
+        ctx = canvas.getContext('2d');
     });
     
     describe("#new", function() {
@@ -38,8 +40,20 @@ describe("Game", function() {
     describe("#draw", function() {
         it("calls update on barrier", function() {
             expect(game.barrier.x).toEqual(game.width);
-            game.draw();
+            game.draw(ctx);
             expect(game.barrier.x).toEqual(496);
+        });
+
+        it("calls update on box", function() {
+            expect(game.box.y).toEqual(game.height/2);
+            expect(game.box.dy).toEqual(0);
+            game.draw(ctx);
+            expect(game.box.y).toEqual(game.height/2); // dy was 0
+            expect(game.box.dy).toEqual(.4);
+            game.draw(ctx);
+            expect(game.box.y).toEqual(250.4); // dy was 0
+            expect(game.box.dy).toEqual(.8);
+
         });
     });
 });

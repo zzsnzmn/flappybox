@@ -18,13 +18,14 @@ Game.prototype.start = function() {
     this.state = "active"
 }
 
-Game.prototype.draw = function() {
+Game.prototype.draw = function(ctx) {
     ctx.clearRect(0, 0, this.width, this.height);
     ctx.fillStyle = "black";
 
     this.barrier.update(this);
     this.box.update(this);
 
-    this.barrier.draw();
-    this.box.draw();
+    this.barrier.draw(ctx);
+    this.box.draw(ctx);
 }
+

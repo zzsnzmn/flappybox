@@ -33,9 +33,9 @@ canvas.addEventListener('mousedown', onClick, false);
 function animate() {
     requestAnimFrame(animate);
     if (game.state === "paused") {
-        game.displayMenu();
+        game.displayMenu(ctx);
     } else {
-        game.draw();
+        game.draw(ctx);
     }
 }
 
