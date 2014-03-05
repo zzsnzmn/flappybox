@@ -8,20 +8,20 @@ function Box(game) {
     this.height = 20;
 }
 
-Box.prototype.update = function(barrier, game) {
+Box.prototype.update = function(game) {
     this.y += this.dy;
     // pretty abysmal gravity simulation
     if (this.dy < 8) {
         this.dy += .4;
     }
-    this.checkCollisions(barrier, game);
+    this.checkCollisions(game);
 }
 
 Box.prototype.checkCollisions = function(game) {
     if (this.x >= game.barrier.x && this.x <= game.barrier.x + game.barrier.w) {
         if (this.y <= game.barrier.offset ||
             this.y + 20 >= game.barrier.offset + game.barrier.h) {
-            game.barrier.x = canvas.width;
+            game.barrier.x = game.width;
             this.dy = 0;
             this.y = game.height/2;
             game.text = "YOU LOSE! Final score: " + game.score + " click to play again!"

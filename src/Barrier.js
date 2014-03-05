@@ -2,7 +2,7 @@
 Barrier object
 */
 function Barrier(game) {
-    this.x = 0;
+    this.x = game.width;
     this.w = 40;
     this.h = 100;
     this.maxY = game.height;  // max bounds for the canvas
@@ -22,7 +22,7 @@ Barrier.prototype.update = function(game) {
 }
 
 Barrier.prototype.reset = function(game) {
-    this.x = canvas.width;
+    this.x = game.width;
     this.offset = Math.floor((Math.random()*300)+30);
     game.score += 1;
 }
